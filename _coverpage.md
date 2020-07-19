@@ -8,4 +8,3 @@
 [![stars](https://badgen.net/github/stars/frankcbliu/Interview_Notes?icon=github&color=4ab8a1)](https://github.com/frankcbliu/Interview_Notes) [![forks](https://badgen.net/github/forks/frankcbliu/Interview_Notes?icon=github&color=4ab8a1)](https://github.com/frankcbliu/Interview_Notes)
 
 [开始阅读](HomePage.md)
-
