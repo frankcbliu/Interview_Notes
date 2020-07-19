@@ -5,16 +5,11 @@
 <br>
 
 
-<div align="center">
-
-<div>
 
 |   算法    | 计算机网络 |      面经       |        More         |
 | :-------: | :--------: | :-------------: | :-----------------: |
 | :pencil2: |  :cloud:   | :bookmark_tabs: | :pencil: Writing... |
 
-</div>
-</div>
 
 <br>
 
