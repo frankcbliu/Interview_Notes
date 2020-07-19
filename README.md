@@ -3,7 +3,11 @@
     <a href="#微信公众号"> <img src="https://badgen.net/badge/%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%BC%96%E7%A8%8B%E5%85%85%E7%94%B5%E5%AE%9D?icon=rss&color=fe7d37"></a>
 </div>
 <br>
-
+<style>
+    table {
+        margin: 0 auto;
+    }
+</style>
 
 
 |   算法    | 计算机网络 |      面经       |        More         |
