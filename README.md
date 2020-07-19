@@ -4,8 +4,8 @@
 </div>
 <br>
 
-<div align="center">
-<table width="400">
+<div style="margin-left:35%">
+<table>
   <thead>
     <tr>
       <th align="center">算法</th>
