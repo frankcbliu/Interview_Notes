@@ -1,0 +1,142 @@
+ /* 隐藏头部的目录 */
+
+ #main>ul:nth-child(1) {
+     display: none;
+ }
+
+ #main>ul:nth-child(2) {
+     display: none;
+ }
+
+ h1+ul {
+     display: block !important;
+ }
+
+ .markdown-section h1 {
+     margin: 3rem 0 2rem 0;
+ }
+
+ .markdown-section h2 {
+     margin: 2rem 0 1rem;
+ }
+
+ img, pre {
+     border-radius: 5px;
+ }
+
+ .markdown-section p.tip, .markdown-section tr:nth-child(1n) {
+     background-color: #f8f8f8 !important;
+ }
+
+ .content, .sidebar, .markdown-section, body, .search input {
+     background-color: rgba(243, 242, 238, 1) !important;
+ }
+
+ @media (min-width:600px) {
+     .sidebar-toggle {
+         background-color: #f3f2ee;
+     }
+ }
+
+ .docsify-copy-code-button {
+     background: #f8f8f8 !important;
+     color: #7a7a7a !important;
+ }
+
+ body {
+     /*font-family: Microsoft YaHei, Source Sans Pro, Helvetica Neue, Arial, sans-serif !important;*/
+ }
+
+ .markdown-section pre>code {
+     font-size: 13px;
+ }
+
+ code, pre {
+     background-color: #fff !important;
+ }
+
+ .markdown-section>p {
+     font-size: 16px !important;
+ }
+
+ .markdown-section pre>code {
+     font-family: Consolas, Roboto Mono, Monaco, courier, monospace !important;
+ }
+
+ p, h1, h2, h3, h4, ol, ul {
+     letter-spacing: 2px !important;
+ }
+
+ p, ol, ul {
+     line-height: 30px !important;
+ }
+
+ @media (min-width:600px) {
+     .markdown-section pre>code {
+         font-size: .9rem !important;
+         letter-spacing: 1.1px !important;
+     }
+ }
+
+ @media (max-width:600px) {
+     .markdown-section pre>code {
+         padding-top: 5px;
+         padding-bottom: 5px;
+         padding-left: 15px !important;
+     }
+     pre:after {
+         content: "" !important;
+     }
+ }
+
+ /*.anchor span {
+  color: rgb(66, 185, 131);
+  }*/
+
+ section.cover h1 {
+     margin: 0;
+ }
+
+ body>section>div.cover-main>ul>li>a {
+     color: #42b983;
+ }
+
+ .markdown-section>div>img, .markdown-section pre {
+     box-shadow: 0px 0px 20px 11px #eaeaea;
+ }
+
+ pre {
+     background-color: #f3f2ee !important;
+ }
+
+ @media (min-width:600px) {
+     pre code {
+         /*box-shadow: 2px 1px 20px 2px #aaa;*/
+         /*border-radius: 10px !important;*/
+         padding-left: 20px !important;
+     }
+ }
+
+ @media (max-width:600px) {
+     pre {
+         padding-left: 3px !important;
+         padding-right: 3px !important;
+         margin-left: -20px !important;
+         margin-right: -20px !important;
+         box-shadow: 0px 0px 20px 0px #eee !important;
+     }
+     .docsify-copy-code-button {
+         display: none;
+     }
+ }
+
+ .markdown-section pre {
+     padding-left: 0 !important;
+     padding-right: 0px !important;
+ }
+
+ /* 设置背景色和默认字体颜色 */
+ .markdown-section pre, .markdown-section pre>code {
+     color: #ccc;
+     background-color: #282828 !important;
+ }
