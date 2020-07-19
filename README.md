@@ -4,7 +4,8 @@
 </div>
 <br>
 
-<table style="display: inline; width: auto; margin: 0 auto;">
+<div align="center">
+<table style="display: inline; width: auto;">
   <thead>
     <tr>
       <th align="center">算法</th>
@@ -35,7 +36,7 @@
     </tr>
   </tbody>
 </table>
-
+</div>
 
 
 <br>
