@@ -1,10 +1,3 @@
-<style>
-    
-    table {
-    margin: auto;
-    } 
-</style>
-
 <div align="center">
     <a href="https://frankcbliu.github.io/Interview_Notes"> <img src="https://badgen.net/badge/Interview_Notes/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB?icon=chrome&color=fe7d37"></a>
     <a href="#微信公众号"> <img src="https://badgen.net/badge/%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%BC%96%E7%A8%8B%E5%85%85%E7%94%B5%E5%AE%9D?icon=rss&color=fe7d37"></a>
@@ -13,9 +6,39 @@
 
 
 
-|   算法    | 计算机网络 |      面经       |        More         |
-| :-------: | :--------: | :-------------: | :-----------------: |
-| :pencil2: |  :cloud:   | :bookmark_tabs: | :pencil: Writing... |
+<div align="center">
+    <table>
+      <thead>
+        <tr>
+          <th align="center">算法</th>
+          <th align="center">计算机网络</th>
+          <th align="center">面经</th>
+          <th align="center">More</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td align="center">
+            <g-emoji class="g-emoji" alias="pencil2"
+              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270f.png">✏️</g-emoji>
+          </td>
+          <td align="center">
+            <g-emoji class="g-emoji" alias="cloud"
+              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png">☁️</g-emoji>
+          </td>
+          <td align="center">
+            <g-emoji class="g-emoji" alias="bookmark_tabs"
+              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png">📑</g-emoji>
+          </td>
+          <td align="center">
+            <g-emoji class="g-emoji" alias="memo"
+              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png">📝</g-emoji>
+            Writing...
+          </td>
+        </tr>
+      </tbody>
+    </table>
+<div>
 
 
 <br>
