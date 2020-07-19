@@ -4,7 +4,7 @@
 </div>
 <br>
 
-<table style="margin:auto:">
+<table style="margin:auto;">
   <thead>
     <tr>
       <th align="center">算法</th>
