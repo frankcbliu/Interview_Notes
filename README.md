@@ -5,7 +5,7 @@
 <br>
 
 <div align="center">
-<table style="display: inline; width: auto;">
+<table width="400">
   <thead>
     <tr>
       <th align="center">算法</th>
