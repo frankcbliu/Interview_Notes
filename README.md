@@ -1,7 +1,7 @@
-<style>
-    table {
-        margin: auto;
-    }
+<style type="text/css">
+table {
+margin: auto;
+}
 </style>
 
 <div align="center">
