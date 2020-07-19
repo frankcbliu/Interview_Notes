@@ -4,41 +4,38 @@
 </div>
 <br>
 
+<table style="margin:auto:">
+  <thead>
+    <tr>
+      <th align="center">算法</th>
+      <th align="center">计算机网络</th>
+      <th align="center">面经</th>
+      <th align="center">More</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center">
+        <g-emoji class="g-emoji" alias="pencil2"
+          fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270f.png">✏️</g-emoji>
+      </td>
+      <td align="center">
+        <g-emoji class="g-emoji" alias="cloud"
+          fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png">☁️</g-emoji>
+      </td>
+      <td align="center">
+        <g-emoji class="g-emoji" alias="bookmark_tabs"
+          fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png">📑</g-emoji>
+      </td>
+      <td align="center">
+        <g-emoji class="g-emoji" alias="memo"
+          fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png">📝</g-emoji>
+        Writing...
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-
-<div align="center">
-    <table>
-      <thead>
-        <tr>
-          <th align="center">算法</th>
-          <th align="center">计算机网络</th>
-          <th align="center">面经</th>
-          <th align="center">More</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="center">
-            <g-emoji class="g-emoji" alias="pencil2"
-              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/270f.png">✏️</g-emoji>
-          </td>
-          <td align="center">
-            <g-emoji class="g-emoji" alias="cloud"
-              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2601.png">☁️</g-emoji>
-          </td>
-          <td align="center">
-            <g-emoji class="g-emoji" alias="bookmark_tabs"
-              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4d1.png">📑</g-emoji>
-          </td>
-          <td align="center">
-            <g-emoji class="g-emoji" alias="memo"
-              fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f4dd.png">📝</g-emoji>
-            Writing...
-          </td>
-        </tr>
-      </tbody>
-    </table>
-<div>
 
 
 <br>
