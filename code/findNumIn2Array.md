@@ -69,6 +69,26 @@ public boolean findNumIn2Array(int[][] matrix, int target) {
 
 
 
+```js
+// js 版
+var findNumberIn2DArray = function(matrix, target) {
+    if (!matrix || !matrix.length || !matrix[0] || !matrix[0].length) return false;
+    let m = matrix.length;      // 行数
+    let n = matrix[0].length;   // 列数
+    let i = m - 1, j = 0;       // 从左下开始查询
+    while (i >= 0 && j < n) {
+         if (matrix[i][j] > target) { // 当前值大于目标值，说明目标值在上方
+            i--;
+        } else if(matrix[i][j] < target) { // 当前值小于目标值，说明目标值在右方
+            j++;
+        }else{
+            return true;
+        }
+    }
+    return false;
+}
+```
+
 
 
 
