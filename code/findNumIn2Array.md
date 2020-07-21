@@ -81,7 +81,7 @@ var findNumberIn2DArray = function(matrix, target) {
             i--;
         } else if(matrix[i][j] < target) { // 当前值小于目标值，说明目标值在右方
             j++;
-        }else{
+        } else {
             return true;
         }
     }
