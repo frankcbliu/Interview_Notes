@@ -52,7 +52,8 @@ body {
 }
 
 code, pre {
-    background-color: #fff !important;
+    background-color: rgba(243, 242, 238, 1) !important;
+    font-weight: bold;
 }
 
 .markdown-section>p {
@@ -60,6 +61,7 @@ code, pre {
 }
 
 .markdown-section pre>code {
+    border-radius: 2px;
     font-family: Consolas, Roboto Mono, Monaco, courier, monospace !important;
 }
 

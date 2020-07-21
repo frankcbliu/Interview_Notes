@@ -1,4 +1,4 @@
-# 代码题目录
+# 剑指 Offer
 
-- [二维数组中的查找](./code/findNumIn2Array.md)
+- [1. 二维数组中的查找](./code/findNumIn2Array.md)
 
