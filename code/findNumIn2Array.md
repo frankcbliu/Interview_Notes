@@ -48,7 +48,7 @@
 
 最终到达右上角仍未找到目标值，则说明目标值不存在，如果中间超出上边界或者右边界，也说明目标值不存在。
 
-### java 版本
+### JAVA 版本
 
 ```java
 public boolean findNumIn2Array(int[][] matrix, int target) {
@@ -75,7 +75,7 @@ public boolean findNumIn2Array(int[][] matrix, int target) {
 }
 ```
 
-
+![image-20200723005550948](https://tva1.sinaimg.cn/large/007S8ZIlgy1gh08lnuh7uj30w406at9j.jpg)
 
 ###  js 版本
 
