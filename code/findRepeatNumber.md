@@ -34,3 +34,17 @@
 
 ## 题解
 
+```js
+/** js 版
+ *	遍历数组，并使用一个map存储对应值，如果map已经存在该值，说明重复，返回当前值。
+ */
+var findRepeatNumber = function(nums) {
+    let map = new Map();
+    for (let num of nums) {
+        if (map.has(num)) return num;
+        else map.set(num, 1);
+    }
+    return null;
+};
+```
+
