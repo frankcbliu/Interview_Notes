@@ -9,7 +9,6 @@
 | :-------: | :--------: | :-------------: | :-----------------: |
 | [:pencil2:](https://frankcbliu.github.io/Interview_Notes/#/README?id=%e2%9c%8f%ef%b8%8f-%e7%ae%97%e6%b3%95) |  :cloud:   | :bookmark_tabs: | :pencil: Writing... |
 
-
 <br>
 
 <div align="center">
