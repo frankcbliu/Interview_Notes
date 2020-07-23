@@ -1,8 +1,10 @@
 
-本篇主要是扫盲，为下一篇`Git`的基本原理做准备，对`Git`基本熟悉的同学可以快速扫一眼，挑不懂的地方看即可。读完本篇你能收获：
-- 知道`Git`和`Github`的联系与区别
-- 了解在大厂所需熟知的的`Git`命令
-- 了解啥叫`CR`、`MR`、`CC`等
+在开始本篇文章之前，读者可以先试着回答以下几个问题：
+- `Git`是什么？和`Github`的区别与联系
+- `Git`有哪些命令，你能数出`10`个来么？
+- `CR`、`MR`、`CC`分别是啥意思？
+
+如果有回答不出的，那么建议还是往下仔细看看文章吧~
 
 ## 基本概念
 
@@ -13,23 +15,23 @@
 
 了解了`Git`，再来说下`Github`。`Github`实际上是一个在现代码托管平台，说人话就是远程仓库。与我们在本地使用 `Git` 时产生的本地仓库相对应。没有`Github`，我们依然可以在本地操作`Git`去管理我们的代码。除了`Github`以外，还有`Gitlab`，国内的码云`Gitee`，都是远程仓库。
 
-## 常用的`Git`命令
+## 常用的 Git 命令
 
-### 获取 `Git` 仓库
+### 获取 Git 仓库
 
 在现有目录下初始化：
-```
+```shell
 $ git init
 ```
 
 从远程仓库克隆：
-```
+```shell
 $ git clone [project_url]
 ```
 
 ### 查看当前状态
 
-```
+```shell
 $ git status   
 On branch master
 Your branch is up to date with 'origin/master'.
@@ -50,7 +52,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 > 这里看起来多了几个文件是为了下面展示不同的标记，所以又改的。
 
-```
+```shell
 $ git status -s
 M  docs/code.md
  D docs/helloworld.md
@@ -66,20 +68,20 @@ M  docs/code.md
 
 ### 跟踪新的文件（加入暂存区）
 
-```
+```shell
 $ git add [file_name]
 ```
 
 按照上面的例子，我们可以使用`git add README`来把`README`文件加入`git`的跟踪范围。
 如果我们有多个文件，甚至还有一堆目录，总不能一个一个加的吧，这时我们可以：
-```
+```shell
 $ git add .
 ```
 就可以添加当前目录下的所有文件/文件夹了。
 
 ### 比较未暂存区和暂存区的代码差异
 
-```
+```shell
 $ git diff
 ```
 
@@ -87,7 +89,7 @@ $ git diff
 
 ### 提交更新到仓库
 
-```
+```shell
 $ git commit -m '此次提交的修改信息'
 ```
 
@@ -97,12 +99,12 @@ $ git commit -m '此次提交的修改信息'
 ### 本地仓库与远程仓库的同步
 
 将本地代码提交到远程仓库的`master`分支：
-```
+```shell
 $ git push origin master
 ```
 
 往往我们是多人合作开发，远程仓库可能还有其他人的改动，那如何从远程仓库拉取其他人的更新到本地仓库呢？
-```
+```shell
 $ git pull origin master
 ```
 当然，往往直接`git pull`即可。
@@ -118,15 +120,15 @@ $ git pull origin master
 所以我们需要更聪明的办法来解决这个问题。
 
 方法1：
-```
+```shell
 $ git stash
 ```
 先将本地的修改保存的栈中，然后拉取远程仓库代码：
-```
+```shell
 $ git pull
 ```
 再把刚刚修改的代码放出来：
-```
+```shell
 $ git stash pop
 ```
 如果存在没法自动合并的部分，代码中会出现
@@ -150,7 +152,7 @@ $ git stash pop
 一般来说有**两种**办法：`revert`和`reset`，以及暴力物理回滚（把上个版本代码的备份下，然后修改现有代码重新提交。）
 
 而在回滚之前我们必须的操作就是看看提交历史：
-```
+```shell
 $ git log
 
 commit d69ca4e2aafxxx6a357701be960c6a80491917xx (HEAD -> master, origin/master, origin/HEAD)
@@ -169,18 +171,18 @@ Date:   Thu Jul 23 00:56:28 2020 +0800
 
 那么我们要回滚到下方那个`da8f`版本咋办呢？
 
-```
-git reset -hard da8fcec8d4xxxf96f2b492e200c0aa2849fdb1xx
+```shell
+$ git reset -hard da8fcec8d4xxxf96f2b492e200c0aa2849fdb1xx
 ```
 
 然后强制推上`Github`：
 
-```
+```shell
 $ git push -f origin master
 ```
 这里为啥又要强制呢？展开来又是另外一个故事了，总而言之，这里介绍的回滚方法适合你自己做的小项目，代码丢失不会造成太大损失，那么放心使用。至于在公司我们该怎样回滚比较合适，后续会再写一篇来讲解。
 
-## 了解`Git`相关的行业术语
+## 了解 Git 相关的行业术语
 
 有些术语其实就是缩写，但是你不知道就是不知道，早点了解不会有坏处。
 - `CR`: `Code Review`的缩写，意思是代码评审，在流程规范的公司开发，代码是需要经过评审才能合入主干的
@@ -192,3 +194,6 @@ $ git push -f origin master
 开发代码 -> 提交代码 -> 代码评审 -> 主管审批-> 代码检查
 ```
 大家自己和同学一起开发项目时也可以尝试下这样的规范，提前熟悉。
+
+# 总结
+希望读者们看完文章后可以回答出开篇的问题，那么这篇文章也就没白写。
