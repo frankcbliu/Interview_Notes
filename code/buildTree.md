@@ -36,3 +36,30 @@
 
 ## 题解
 
+```js
+/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+/**
+ * @param {number[]} preorder
+ * @param {number[]} inorder
+ * @return {TreeNode}
+ */
+var buildTree = function(preorder, inorder) {
+    if (!preorder.length) return null;
+    let head = new TreeNode(preorder[0]);
+    let headIndex = inorder.indexOf(head.val); // 头节点在中序数组中的下标
+    let leftPreorder = preorder.slice(1, headIndex+1); // 左子树前序
+    let rightPreorder = preorder.slice(headIndex+1); // 右子树前序
+    let leftInorder = inorder.slice(0, headIndex); // 左子树中序
+    let rightInorder = inorder.slice(headIndex+1); // 右子树中序
+    head.left = buildTree(leftPreorder, leftInorder); // 递归建立左右子树
+    head.right = buildTree(rightPreorder, rightInorder);
+    return head;
+};
+```
+
