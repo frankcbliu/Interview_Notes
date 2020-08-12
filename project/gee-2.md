@@ -1,4 +1,4 @@
-# 2. Gee - Context
+# 2. Gee - 上下文设计（Context）
 
 - 将`路由(router)`独立出来，方便之后增强。
 - 设计`上下文(Context)`，封装 Request 和 Response ，提供对 JSON、HTML 等返回类型的支持。
@@ -8,47 +8,48 @@
 
 为了展示第二天的成果，我们看一看在使用时的效果。
 
-[day2-context/main.go](https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context)
-
 ```go
+// gee-web/main.go
+
 func main() {
 	r := gee.New()
 	r.GET("/", func(c *gee.Context) {
-		c.HTML(http.StatusOK, "<h1>Hello Gee</h1>")
+		c.HTML(http.StatusOK, "<h1>Hello Gee!</h1>")
 	})
 	r.GET("/hello", func(c *gee.Context) {
-		// expect /hello?name=geektutu
-		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
+		// expect /hello?name=geek
+		c.String(http.StatusOK, "hello %s, you are at %s\n", c.Query("name"), c.Path)
 	})
-
 	r.POST("/login", func(c *gee.Context) {
 		c.JSON(http.StatusOK, gee.H{
 			"username": c.PostForm("username"),
 			"password": c.PostForm("password"),
 		})
 	})
-
-	r.Run(":9999")
+	err := r.Run(":8080")
+	if err != nil { // 启动服务失败
+		panic("start server error!")
+	}
 }
 ```
 
-- `Handler`的参数变成成了`gee.Context`，提供了查询Query/PostForm参数的功能。
+- `Handler`的参数变成成了`gee.Context`，提供了查询`Query/PostForm`参数的功能。
 - `gee.Context`封装了`HTML/String/JSON`函数，能够快速构造HTTP响应。
 
 ## 设计Context
 
 ### 必要性
 
-1. 对Web服务来说，无非是根据请求`*http.Request`，构造响应`http.ResponseWriter`。但是这两个对象提供的接口粒度太细，比如我们要构造一个完整的响应，需要考虑消息头(Header)和消息体(Body)，而 Header 包含了状态码(StatusCode)，消息类型(ContentType)等几乎每次请求都需要设置的信息。因此，如果不进行有效的封装，那么框架的用户将需要写大量重复，繁杂的代码，而且容易出错。针对常用场景，能够高效地构造出 HTTP 响应是一个好的框架必须考虑的点。
+对 Web 服务来说，无非是根据请求`*http.Request`，构造响应`http.ResponseWriter`。但是这两个对象提供的接口粒度太细，比如我们要构造一个完整的响应，需要考虑消息头(Header)和消息体(Body)，而 Header 包含了状态码(StatusCode)，消息类型(ContentType) 等几乎每次请求都需要设置的信息。因此，如果不进行有效的封装，那么框架的用户将需要写大量重复，繁杂的代码，而且容易出错。针对常用场景，能够高效地构造出 HTTP 响应是一个好的框架必须考虑的点。
 
 用返回 JSON 数据作比较，感受下封装前后的差距。
 
-封装前
+**封装前**
 
 ```go
 obj = map[string]interface{}{
-    "name": "geektutu",
-    "password": "1234",
+    "name": "geek",
+    "password": "123456",
 }
 w.Header().Set("Content-Type", "application/json")
 w.WriteHeader(http.StatusOK)
@@ -58,7 +59,7 @@ if err := encoder.Encode(obj); err != nil {
 }
 ```
 
-VS 封装后：
+**封装后**：
 
 ```go
 c.JSON(http.StatusOK, gee.H{
@@ -71,54 +72,60 @@ c.JSON(http.StatusOK, gee.H{
 
 ### 具体实现
 
-[day2-context/gee/context.go](https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context)
-
 ```go
+// gee-web/gee/context.go
+
 type H map[string]interface{}
 
 type Context struct {
 	// origin objects
-	Writer http.ResponseWriter
-	Req    *http.Request
-	// request info
-	Path   string
+	Writer  http.ResponseWriter
+	Request *http.Request
+	// 请求信息
 	Method string
-	// response info
+	Path   string
+	// 返回信息
 	StatusCode int
 }
 
-func newContext(w http.ResponseWriter, req *http.Request) *Context {
+func NewContext(w http.ResponseWriter, req *http.Request) *Context {
 	return &Context{
-		Writer: w,
-		Req:    req,
-		Path:   req.URL.Path,
-		Method: req.Method,
+		Writer:  w,
+		Request: req,
+		Method:  req.Method,
+		Path:    req.URL.Path,
 	}
 }
 
+// 获取 Form 参数
 func (c *Context) PostForm(key string) string {
-	return c.Req.FormValue(key)
+	return c.Request.FormValue(key)
 }
 
+// 获取 Query 参数
 func (c *Context) Query(key string) string {
-	return c.Req.URL.Query().Get(key)
+	return c.Request.URL.Query().Get(key)
 }
 
+// 设置状态码
 func (c *Context) Status(code int) {
 	c.StatusCode = code
 	c.Writer.WriteHeader(code)
 }
 
+// 设置请求头
 func (c *Context) SetHeader(key string, value string) {
 	c.Writer.Header().Set(key, value)
 }
 
+// 返回 format 字符串
 func (c *Context) String(code int, format string, values ...interface{}) {
 	c.SetHeader("Content-Type", "text/plain")
 	c.Status(code)
 	c.Writer.Write([]byte(fmt.Sprintf(format, values...)))
 }
 
+// 返回 JSON
 func (c *Context) JSON(code int, obj interface{}) {
 	c.SetHeader("Content-Type", "application/json")
 	c.Status(code)
@@ -128,11 +135,13 @@ func (c *Context) JSON(code int, obj interface{}) {
 	}
 }
 
+// 返回 Data
 func (c *Context) Data(code int, data []byte) {
 	c.Status(code)
 	c.Writer.Write(data)
 }
 
+// 返回 HTML
 func (c *Context) HTML(code int, html string) {
 	c.SetHeader("Content-Type", "text/html")
 	c.Status(code)
@@ -141,31 +150,34 @@ func (c *Context) HTML(code int, html string) {
 ```
 
 - 代码最开头，给`map[string]interface{}`起了一个别名`gee.H`，构建JSON数据时，显得更简洁。
-- `Context`目前只包含了`http.ResponseWriter`和`*http.Request`，另外提供了对 Method 和 Path 这两个常用属性的直接访问。
-- 提供了访问Query和PostForm参数的方法。
-- 提供了快速构造String/Data/JSON/HTML响应的方法。
+- `Context`目前只包含了`http.ResponseWriter`和`*http.Request`，另外提供了对 `Method` 和 `Path` 这两个常用属性的直接访问。
+- 提供了访问`Query`和`PostForm`参数的方法。
+- 提供了快速构造`String/Data/JSON/HTML`响应的方法。
 
 ## 路由(Router)
 
 我们将和路由相关的方法和结构提取了出来，放到了一个新的文件中`router.go`，方便我们下一次对 router 的功能进行增强，例如提供动态路由的支持。 router 的 handle 方法作了一个细微的调整，即 handler 的参数，变成了 Context。
 
-[day2-context/gee/router.go](https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context)
-
 ```go
+// gee-web/gee/router.go
+
 type router struct {
+	// 路由表
 	handlers map[string]HandlerFunc
 }
 
-func newRouter() *router {
+func NewRouter() *router {
 	return &router{handlers: make(map[string]HandlerFunc)}
 }
 
+// 往路由表中添加路由
 func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {
 	log.Printf("Route %4s - %s", method, pattern)
 	key := method + "-" + pattern
 	r.handlers[key] = handler
 }
 
+// 处理路由函数
 func (r *router) handle(c *Context) {
 	key := c.Method + "-" + c.Path
 	if handler, ok := r.handlers[key]; ok {
@@ -173,48 +185,47 @@ func (r *router) handle(c *Context) {
 	} else {
 		c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
 	}
-}
+}å
 ```
 
 ## 框架入口
 
-[day2-context/gee/gee.go](https://github.com/geektutu/7days-golang/tree/master/gee-web/day2-context)
-
 ```go
-// HandlerFunc defines the request handler used by gee
-type HandlerFunc func(*Context)
+// gee-web/gee/gee.go
 
-// Engine implement the interface of ServeHTTP
+// 定义一个处理函数
+type HandlerFunc func(c *Context)
+
 type Engine struct {
 	router *router
 }
 
 // New is the constructor of gee.Engine
 func New() *Engine {
-	return &Engine{router: newRouter()}
+	return &Engine{router: NewRouter()}
 }
 
 func (engine *Engine) addRoute(method string, pattern string, handler HandlerFunc) {
 	engine.router.addRoute(method, pattern, handler)
 }
 
-// GET defines the method to add GET request
+// 添加 Get 请求
 func (engine *Engine) GET(pattern string, handler HandlerFunc) {
 	engine.addRoute("GET", pattern, handler)
 }
 
-// POST defines the method to add POST request
+// 添加 POST 请求
 func (engine *Engine) POST(pattern string, handler HandlerFunc) {
 	engine.addRoute("POST", pattern, handler)
 }
 
-// Run defines the method to start a http server
+// 启动 HTTP 服务
 func (engine *Engine) Run(addr string) (err error) {
 	return http.ListenAndServe(addr, engine)
 }
 
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	c := newContext(w, req)
+	c := NewContext(w, req)
 	engine.router.handle(c)
 }
 ```
@@ -224,19 +235,28 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 如何使用，`main.go`一开始就已经亮相了。运行`go run main.go`，借助 curl ，一起看一看今天的成果吧。
 
 ```bash
-$ curl -i http://localhost:9999/
+$ curl -i 127.0.0.1:8080
 HTTP/1.1 200 OK
-Date: Mon, 12 Aug 2019 16:52:52 GMT
-Content-Length: 18
-Content-Type: text/html; charset=utf-8
-<h1>Hello Gee</h1>
+Content-Type: text/html
+Date: Wed, 12 Aug 2020 09:47:36 GMT
+Content-Length: 20
 
-$ curl "http://localhost:9999/hello?name=geektutu"
-hello geektutu, you are at /hello
+<h1>Hello Gee!</h1>
 
-$ curl "http://localhost:9999/login" -X POST -d 'username=geektutu&password=1234'
-{"password":"1234","username":"geektutu"}
+$ curl "http://localhost:8080/hello?name=geek"
+hello geek, you are at /hello
 
-$ curl "http://localhost:9999/xxx"
+$ curl "http://localhost:8080/login" -X POST -d 'username=geek&password=123456'
+{"password":"123456","username":"geek"}
+
+$ curl "http://localhost:8080/xxx"
 404 NOT FOUND: /xxx
 ```
+
+> 注意到代码中的 package/import 均被省略，读者需自行补充，使用 GoLand 的话 IDE 会自动补上。
+
+
+---
+
+
+> 本文改自【极客兔兔】博文：https://geektutu.com/post/gee-day2.html
