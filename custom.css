@@ -143,3 +143,10 @@ pre {
     color: #ccc;
     background-color: #282828 !important;
 }
+
+/* 翻页跳转 左中右结构 */
+.jump {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}

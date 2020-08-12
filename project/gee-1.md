@@ -259,6 +259,11 @@ $ curl http://localhost:8080/world
 至此，整个`Gee`框架的原型已经出来了。实现了路由映射表，提供了用户注册静态路由的方法，包装了启动服务的函数。当然，到目前为止，我们还没有实现比`net/http`标准库更强大的能力，不用担心，很快就可以将动态路由、中间件等功能添加上去了。
 
 
+<div class="jump">
+	<a href="#/./docs/go-web">Previous</a>
+	<a href="#/./docs/go-web">返回目录</a>
+	<a href="#/./project/gee-2">Next</a>
+</div>
 
 
 ----
