@@ -258,7 +258,7 @@ $ curl "http://localhost:8080/xxx"
 
 <div class="jump">
 	<a href="#/./project/gee-1">Previous</a>
-	<a href="#/./docs/go-web">返回目录</a>
+	<a href="#/./docs/go-web">目录</a>
 	<a href="#/./project/gee-3">Next</a>
 </div>
 

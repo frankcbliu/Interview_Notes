@@ -261,7 +261,7 @@ $ curl http://localhost:8080/world
 
 <div class="jump">
 	<a href="#/./docs/go-web">Previous</a>
-	<a href="#/./docs/go-web">返回目录</a>
+	<a href="#/./docs/go-web">目录</a>
 	<a href="#/./project/gee-2">Next</a>
 </div>
 
