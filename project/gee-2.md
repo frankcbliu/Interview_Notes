@@ -219,7 +219,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 ```
 
-将`router`相关的代码独立后，`gee.go`简单了不少。最重要的还是通过实现了 ServeHTTP 接口，接管了所有的 HTTP 请求。相比第一天的代码，这个方法也有细微的调整，在调用 router.handle 之前，构造了一个 Context 对象。这个对象目前还非常简单，仅仅是包装了原来的两个参数，之后我们会慢慢地给Context插上翅膀。
+将`router`相关的代码独立后，`gee.go`简单了不少。最重要的还是通过实现了 `ServeHTTP` 接口，接管了所有的 HTTP 请求。相比第一天的代码，这个方法也有细微的调整，在调用 `router.handle` 之前，构造了一个 Context 对象。这个对象目前还非常简单，仅仅是包装了原来的两个参数，之后我们会慢慢地给 Context 插上翅膀。
 
 如何使用，`main.go`一开始就已经亮相了。运行`go run main.go`，借助 curl ，一起看一看今天的成果吧。
 
