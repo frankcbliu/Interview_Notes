@@ -36,14 +36,24 @@
         noData: '🈚 Not Found! ',
         depth: 6
       },
-      // track-id
-      ga: 'UA-172782061-1'
+      // // track-id
+      // ga: 'UA-172782061-1'
     }
   </script>
 
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <!-- Google Analytics -->
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+  <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-172782061-1', 'auto');
+    ga('send', 'pageview');
+  </script>
   <!-- 复制代码 -->
   <script src="//unpkg.com/docsify-copy-code"></script>
   <!--全文搜索-->
