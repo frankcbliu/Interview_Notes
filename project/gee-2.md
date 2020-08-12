@@ -55,7 +55,7 @@ w.Header().Set("Content-Type", "application/json")
 w.WriteHeader(http.StatusOK)
 encoder := json.NewEncoder(w)
 if err := encoder.Encode(obj); err != nil {
-    http.Error(w, err.Error(), 500)
+  panic(err)
 }
 ```
 
@@ -122,7 +122,10 @@ func (c *Context) SetHeader(key string, value string) {
 func (c *Context) String(code int, format string, values ...interface{}) {
 	c.SetHeader("Content-Type", "text/plain")
 	c.Status(code)
-	c.Writer.Write([]byte(fmt.Sprintf(format, values...)))
+	_, err := c.Writer.Write([]byte(fmt.Sprintf(format, values...)))
+	if err != nil {
+		panic(err)
+	}
 }
 
 // 返回 JSON
@@ -131,21 +134,27 @@ func (c *Context) JSON(code int, obj interface{}) {
 	c.Status(code)
 	encoder := json.NewEncoder(c.Writer)
 	if err := encoder.Encode(obj); err != nil {
-		http.Error(c.Writer, err.Error(), 500)
+		panic(err)
 	}
 }
 
 // 返回 Data
 func (c *Context) Data(code int, data []byte) {
 	c.Status(code)
-	c.Writer.Write(data)
+	_, err := c.Writer.Write(data)
+	if err != nil {
+		panic(err)
+	}
 }
 
 // 返回 HTML
 func (c *Context) HTML(code int, html string) {
 	c.SetHeader("Content-Type", "text/html")
 	c.Status(code)
-	c.Writer.Write([]byte(html))
+	_, err := c.Writer.Write([]byte(html))
+	if err != nil {
+		panic(err)
+	}
 }
 ```
 
@@ -185,7 +194,7 @@ func (r *router) handle(c *Context) {
 	} else {
 		c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
 	}
-}å
+}
 ```
 
 ## 框架入口
