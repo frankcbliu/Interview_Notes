@@ -405,3 +405,15 @@ hello geekt, you are at /hello/geek
 $ curl "http://localhost:8080/assets/css/geek.css"
 {"filepath":"css/geek.css"}
 ```
+
+
+<div class="jump">
+	<a href="#/./project/gee-2">Previous</a>
+	<a href="#/./docs/go-web">目录</a>
+	<a href="#/./project/gee-4">Next</a>
+</div>
+
+---
+
+
+> 本文改自【极客兔兔】博文：https://geektutu.com/post/gee-day3.html
