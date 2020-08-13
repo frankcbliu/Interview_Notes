@@ -1,12 +1,11 @@
 # 2. Gee - 上下文设计（Context）
 
-- 将`路由(router)`独立出来，方便之后增强。
-- 设计`上下文(Context)`，封装 Request 和 Response ，提供对 JSON、HTML 等返回类型的支持。
-- 动手写 Gee 框架的第二天，**框架代码140行，新增代码约90行**
+- 将`gee`中的`路由(router)`独立出来，方便后续设计。
+- 增加`上下文(Context)`，封装 `Request` 和 `Response` ，提供对 `JSON`、`HTML` 等返回类型的支持。
 
-## 使用效果
+## 用法展示
 
-为了展示第二天的成果，我们看一看在使用时的效果。
+这里我们采用倒叙的方式，先看看第二天的代码写完后，在`main`函数中如何使用：
 
 ```go
 // gee-web/main.go
@@ -33,16 +32,24 @@ func main() {
 }
 ```
 
-- `Handler`的参数变成成了`gee.Context`，提供了查询`Query/PostForm`参数的功能。
+- 如下所示，我们看到`Get`方法的参数`HandlerFunc`的参数变成成了`*gee.Context`，提供了查询`Query/PostForm`参数的功能。
+
+```go
+// 添加 Get 请求
+func (engine *Engine) GET(pattern string, handler HandlerFunc) {
+	engine.addRoute("GET", pattern, handler)
+}
+```
+
 - `gee.Context`封装了`HTML/String/JSON`函数，能够快速构造HTTP响应。
 
-## 设计Context
+## Context 设计
 
 ### 必要性
 
-对 Web 服务来说，无非是根据请求`*http.Request`，构造响应`http.ResponseWriter`。但是这两个对象提供的接口粒度太细，比如我们要构造一个完整的响应，需要考虑消息头(Header)和消息体(Body)，而 Header 包含了状态码(StatusCode)，消息类型(ContentType) 等几乎每次请求都需要设置的信息。因此，如果不进行有效的封装，那么框架的用户将需要写大量重复，繁杂的代码，而且容易出错。针对常用场景，能够高效地构造出 HTTP 响应是一个好的框架必须考虑的点。
+对 Web 服务来说，无非是根据请求`*http.Request`，构造响应`http.ResponseWriter`。但是这两个对象提供的接口粒度太细，如果我们要构造一个完整的`请求-响应`，需要考虑消息头(Header)和消息体(Body)，而 Header 包含了状态码(StatusCode)，消息类型(ContentType) 等几乎**每次请求都需要设置的信息**。因此，如果不能进行有效的封装，那么我们在使用框架时就需要写大量重复、繁杂的代码，而且容易出错。作为一个好的框架，我们需要针对常用场景能够快速地构造出 HTTP 响应。
 
-用返回 JSON 数据作比较，感受下封装前后的差距。
+这里我们用返回 JSON 数据作比较，感受一下封装前后的差别。
 
 **封装前**
 
@@ -68,7 +75,14 @@ c.JSON(http.StatusOK, gee.H{
 })
 ```
 
-1. 针对使用场景，封装`*http.Request`和`http.ResponseWriter`的方法，简化相关接口的调用，只是设计 Context 的原因之一。对于框架来说，还需要支撑额外的功能。例如，将来解析动态路由`/hello/:name`，参数`:name`的值放在哪呢？再比如，框架需要支持中间件，那中间件产生的信息放在哪呢？Context 随着每一个请求的出现而产生，请求的结束而销毁，和当前请求强相关的信息都应由 Context 承载。因此，设计 Context 结构，扩展性和复杂性留在了内部，而对外简化了接口。路由的处理函数，以及将要实现的中间件，参数都统一使用 Context 实例， Context 就像一次会话的百宝箱，可以找到任何东西。
+显然，封装后的代码简洁、清晰了许多。
+
+除了封装`*http.Request`和`http.ResponseWriter`的方法，简化相关接口的调用，我们设计 Context 还有其他原因：
+
+- 例如，将来解析动态路由`/hello/:name`，参数`:name`的值放在哪呢？
+- 再比如，框架需要支持中间件，那中间件产生的信息放在哪呢？
+
+事实上，`Context` 是贯穿请求的生命周期的，当一个请求从出现到结束，`Context` 也相应地从产生到销毁。和当前请求强相关的信息都应该存储在 `Context` 上。因此，我们设计 `Context` 时，将扩展性和复杂性留在了内部，对外则简化接口。路由的处理函数、将要实现的中间件，参数都统一使用 `Context` 实例， `Context` 就像一次会话的百宝箱，可以找到任何东西。
 
 ### 具体实现
 
@@ -158,14 +172,14 @@ func (c *Context) HTML(code int, html string) {
 }
 ```
 
-- 代码最开头，给`map[string]interface{}`起了一个别名`gee.H`，构建JSON数据时，显得更简洁。
-- `Context`目前只包含了`http.ResponseWriter`和`*http.Request`，另外提供了对 `Method` 和 `Path` 这两个常用属性的直接访问。
+- 代码最开头，给`map[string]interface{}`起了一个别名`gee.H`，便于简洁地构建JSON数据。
+- `Context`目前只包含了`http.ResponseWriter`和`*http.Request`，以及提供对 `Method` 和 `Path` 这两个常用属性的直接访问。
 - 提供了访问`Query`和`PostForm`参数的方法。
 - 提供了快速构造`String/Data/JSON/HTML`响应的方法。
 
 ## 路由(Router)
 
-我们将和路由相关的方法和结构提取了出来，放到了一个新的文件中`router.go`，方便我们下一次对 router 的功能进行增强，例如提供动态路由的支持。 router 的 handle 方法作了一个细微的调整，即 handler 的参数，变成了 Context。
+我们将和路由相关的方法和结构提取出来，放到了一个`router.go`中，方便我们下一次对 router 的功能进行升级，例如提供动态路由的支持。 router 的 handle 方法作了一个细微的调整，即 handler 的参数，变成了 Context。
 
 ```go
 // gee-web/gee/router.go
@@ -202,7 +216,7 @@ func (r *router) handle(c *Context) {
 ```go
 // gee-web/gee/gee.go
 
-// 定义一个处理函数
+// 此处参数类型改为了 *Context
 type HandlerFunc func(c *Context)
 
 type Engine struct {
@@ -239,7 +253,7 @@ func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 ```
 
-将`router`相关的代码独立后，`gee.go`简单了不少。最重要的还是通过实现了 `ServeHTTP` 接口，接管了所有的 HTTP 请求。相比第一天的代码，这个方法也有细微的调整，在调用 `router.handle` 之前，构造了一个 Context 对象。这个对象目前还非常简单，仅仅是包装了原来的两个参数，之后我们会慢慢地给 Context 插上翅膀。
+将`router`相关的代码独立后，`gee.go`简洁了不少。当然，最重要的还是通过实现 `ServeHTTP` 接口，接管所有的 HTTP 请求。相比第一天的代码，这个方法也有细微的调整，在调用 `router.handle` 之前，先构造一个 `Context` 对象。这个对象目前还非常简单，仅仅包装了两个参数，之后我们会慢慢地给 Context 插上翅膀。
 
 如何使用，`main.go`一开始就已经亮相了。运行`go run main.go`，借助 curl ，一起看一看今天的成果吧。
 
@@ -262,7 +276,7 @@ $ curl "http://localhost:8080/xxx"
 404 NOT FOUND: /xxx
 ```
 
-> 注意到代码中的 package/import 均被省略，读者需自行补充，使用 GoLand 的话 IDE 会自动补上。
+> 注意到代码中的 `package/import` 均被省略，读者需自行补充，使用 GoLand 的话 IDE 会自动补上。
 
 
 <div class="jump">
