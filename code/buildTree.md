@@ -36,6 +36,45 @@
 
 ## 题解
 
+### JAVA 版本
+首先采用递归思路，实现一版：
+```java
+public TreeNode buildTree(int[] preorder, int[] inorder) {
+    // 处理边界
+    if (preorder.length == 0 || inorder.length == 0) {
+        return null;
+    }
+
+    // 取出前序遍历的第一个值，作为根节点
+    int val = preorder[0];
+    TreeNode root = new TreeNode(val);
+    // 找到其在中序遍历数组中的位置，其左边的为左子树，右边的为右子树
+    int index = findRootIndex(inorder, val);
+    if (index > 0)
+        root.left = buildTree(Arrays.copyOfRange(preorder, 1, index + 1), Arrays.copyOfRange(inorder, 0, index));
+    root.right = buildTree(Arrays.copyOfRange(preorder, index + 1, preorder.length), Arrays.copyOfRange(inorder, index + 1, inorder.length));
+    return root;
+}
+
+private int findRootIndex(int[] arr, int target) {
+    // 第一版采用暴力的遍历方法搜索其在数组中的位置
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == target) {
+            return i;
+        }
+    }
+    return -1;
+}
+```
+
+接下来考虑进行优化：
+
+
+
+
+
+### js 版本
+
 ```js
 /**
  * Definition for a binary tree node.
