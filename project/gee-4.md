@@ -160,3 +160,16 @@ hello geek, you are at /api/speak
 $ curl "http://localhost:8080/auth/assets/sixsixsix.jpg"
 {"filepath":"sixsixsix.jpg"}
 ```
+
+
+
+<div class="jump">
+	<a href="#/./project/gee-3">Previous</a>
+	<a href="#/./docs/go-web">目录</a>
+	<a href="#/./project/gee-5">Next</a>
+</div>
+
+---
+
+
+> 本文改自【极客兔兔】博文：https://geektutu.com/post/gee-day4.html
