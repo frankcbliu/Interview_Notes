@@ -270,3 +270,14 @@ $ curl localhost:8080/auth/hello/geek
 2020/08/16 23:43:03 [500] /auth/hello/geek in 195.26µs
 ```
 
+
+<div class="jump">
+	<a href="#/./project/gee-4">Previous</a>
+	<a href="#/./docs/go-web">目录</a>
+	<a href="#/./project/gee-6">Next</a>
+</div>
+
+---
+
+
+> 本文改自【极客兔兔】博文：https://geektutu.com/post/gee-day5.html
