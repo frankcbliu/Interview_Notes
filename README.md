@@ -1,5 +1,5 @@
 <div align="center">
-    <a href="https://www.szufrank.top/Interview_Notes"> <img src="https://badgen.net/badge/Interview_Notes/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB?icon=chrome&color=fe7d37"></a>
+    <a href="http://szufrank.top/#/"> <img src="https://badgen.net/badge/Interview_Notes/%E5%9C%A8%E7%BA%BF%E9%98%85%E8%AF%BB?icon=chrome&color=fe7d37"></a>
     <a href="#微信公众号"> <img src="https://badgen.net/badge/%E5%85%AC%E4%BC%97%E5%8F%B7/%E7%BC%96%E7%A8%8B%E5%85%85%E7%94%B5%E5%AE%9D?icon=rss&color=fe7d37"></a>
 </div>
 <br>
@@ -7,7 +7,7 @@
 
 |   算法    | 计算机网络 |      项目       |        More         |
 | :-------: | :--------: | :-------------: | :-----------------: |
-| [:pencil2:](https://www.szufrank.top/Interview_Notes/#/README?id=%e2%9c%8f%ef%b8%8f-%e7%ae%97%e6%b3%95) |  :cloud:   | 📔 | :pencil: Writing... |
+| [:pencil2:](http://szufrank.top/#/./docs/code) |  :cloud:   | [📔](http://szufrank.top/#/./docs/go-web) | :pencil: Writing... |
 
 <br>
 
@@ -16,10 +16,10 @@
 </div>
 
 ## ✏️ 算法
-- [剑指 Offer 题解](https://www.szufrank.top/Interview_Notes/#/./docs/code?id=%e5%89%91%e6%8c%87-offer-%e9%a2%98%e8%a7%a3)
+- [剑指 Offer 题解](http://szufrank.top/#/./docs/code)
 
 ## 📔 项目
-- [Go语言动手写Web框架 - Gee](https://www.szufrank.top/Interview_Notes/#/./docs/go-web)
+- [Go语言动手写Web框架 - Gee](http://szufrank.top/#/./docs/go-web)
 
 
 <br>
@@ -34,7 +34,7 @@
 
 ```
 版权声明：本文为Github用户「frankcbliu」的原创文章，遵循CC 1.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://www.szufrank.top/Interview_Notes/#/
+原文链接：http://szufrank.top/#/
 ```
 
 [CC0-1.0 BY-NC-SA](https://github.com/frankcbliu/Interview_Notes/blob/master/LICENSE).
