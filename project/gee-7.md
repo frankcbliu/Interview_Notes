@@ -290,3 +290,14 @@ TraceBack:
 
 - [Package runtime - golang.org](https://golang.org/pkg/runtime/)
 - [Is it possible get information about caller function in Golang? - StackOverflow](https://stackoverflow.com/questions/35212985/is-it-possible-get-information-about-caller-function-in-golang)
+
+
+<div class="jump">
+	<a href="#/./project/gee-6">Previous</a>
+	<a href="#/./docs/go-web">目录</a>
+	<a href="#/./project/gee-summary">Next</a>
+</div>
+
+---
+
+> 本文改自【极客兔兔】博文：https://geektutu.com/post/gee-day7.html
