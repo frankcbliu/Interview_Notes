@@ -118,9 +118,9 @@ func (c *Context) HTML(code int, name string, data interface{}) {
 
 我们在 `Context` 中添加了成员变量 `engine *Engine`，这样就能够通过 `Context` 访问 `Engine` 中的 `HTML` 模板。实例化 `Context` 时，还需要给 `c.engine` 赋值。
 
-[day6-template/gee/gee.go](https://github.com/geektutu/7days-golang/tree/master/gee-web/day6-template)
-
 ```go
+// gee-web/gee/gee.go
+
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	// ...
 	c := NewContext(w, req)
