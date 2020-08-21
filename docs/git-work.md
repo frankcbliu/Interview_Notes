@@ -29,7 +29,10 @@
 
 上一篇文章中我们讲了`git diff`可以直观的看到**工作区**和**暂存区**的差异，这里我们画图演示下不同的`diff`是如何比较的：
 
-![image-20200820154529572](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxbnyjbbyj316e0ne77f.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxbnyjbbyj316e0ne77f.jpg" height="400px"></img>
+</p>
 
 - `git diff`，不加任何参数，将工作区（未`add`的内容）和暂存区进行比较；
 - `git diff HEAD`，将工作区与`HEAD`指针指向的`commit`进行比较，一般来说我们当前的改动就是在`HEAD`指向的`commit`的基础上进行改动；
@@ -43,15 +46,24 @@
 
 - 当前`HEAD`指向末尾的`commit`：
 
-![image-20200820161112096](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxcep8a22j317m0m441n.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxcep8a22j317m0m441n.jpg" height="400px"></img>
+</p>
 
 - 当前`HEAD`指向中间的`commit`，此时提交就会再分离出一条新的路线，因此后续的分支合并就不可避免地要派上用场。
 
-![image-20200820161045817](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxce8tyfnj30zq0p6juo.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxce8tyfnj30zq0p6juo.jpg" height="400px"></img>
+</p>
 
 - 希望用新提交覆盖前一个提交：`git commit --amend`：
 
-![image-20200820161754744](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxclor0hjj313a0lk0wd.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxclor0hjj313a0lk0wd.jpg" height="400px"></img>
+</p>
 
 这个使用场景也非常广泛，比如我们`git commit`后才发现漏改了点东西，这个时候如果再改再提交，就会导致对一个错误的修改用了两个`commit`，在`git log`上看将会非常丑，对于我们自己做小`demo`时可能无所谓，对于一些大项目或者开源项目，本来`commit`就很多，这样胡乱地增加`commit`必然是不能接受的。
 
@@ -61,14 +73,20 @@
 
 当我们使用`git checkout [branch_name]`切换分支时，如下图所示：
 
-![image-20200820162351757](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxcrvk13rj30zq0komzm.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxcrvk13rj30zq0komzm.jpg" height="400px"></img>
+</p>
 
 `dev`分支会把其中的内容复制到暂存区和工作区中，覆盖掉`master`的版本，而只存在于`master`的文件则会被删除。
 
 ### reset
 下图展示了回滚的情况，具体的三种情况请仔细看下方的描述：
 
-![image-20200820163431733](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxd30i7y1j30y80kigol.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghxd30i7y1j30y80kigol.jpg" height="400px"></img>
+</p>
 
 - `git reset [commitId] --sort`，这是最弱的回滚方式，只改变`commit`信息，不影响**暂存区**和**工作区**；
 - `git reset [commitId]`，不携带参数时，默认只回滚**暂存区**，也就是把`dks8v`所在的信息复制到**暂存区**，但是不影响**工作区**；
@@ -86,7 +104,10 @@
 
 `Recursive`是`Git`在合并两个**有分叉**的分支时的默认行为，简单的说，是递归的进行三路合并。
 
-![image-20200821154338713](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyh8c69f7j318u0oyn1n.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyh8c69f7j318u0oyn1n.jpg" height="400px"></img>
+</p>
 
 这里出现了一个新名词——`三路合并（three-way merge）`，也是我们接下来讲解的重点。我们先搞清楚合并的整体链路。
 
@@ -100,13 +121,19 @@
 
 下图所示为`test.py`中某一行的代码，如果我们要将`A/B`两个版本合并，就需要确定是`A`修改了`B`，还是`B`修改了`A`，亦或者两者都修改了，显然这种情况下分辨不出来。
 
-![image-20200821160242437](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhs6cue4j30ka08w74o.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhs6cue4j30ka08w74o.jpg"></img>
+</p>
 
 因此，为了实现两个文件的合并，我们引入**三路合并**：
 
 如下图所示，很显然`A`与`Base`版本相同，`B`版本的修改比`A`版本新，因此将`A/B`合并后，得到的就是`B`版本。
 
-![image-20200821160632748](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhw6316fj30jq0emq3p.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhw6316fj30jq0emq3p.jpg" height="400px"></img>
+</p>
 
 聪明的读者看完上面的例子，就会想到，要是`A/B`和`Base`都不一样怎么办？这就是接下来要讲的问题了。
 
@@ -114,7 +141,10 @@
 
 当出现下图这种情况时，一般就需要我们手动解决冲突了。
 
-![image-20200821160925270](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhz5vbohj30ji0e6mxx.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhz5vbohj30ji0e6mxx.jpg" height="400px"></img>
+</p>
 
 也就是我们在合并代码时往往会看到的一种情况：
 
@@ -134,27 +164,42 @@ print("hello")
 
 最终合并结果：
 
-![image-20200821161603219](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyi62do05j30w80dkmyc.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyi62do05j30w80dkmyc.jpg" height="400px"></img>
+</p>
 
 ### 递归三路合并
 
 在实际的生产环境中，`Git`的分支往往非常繁杂，会导致合并`A/B`时，能找到多个`A/B`的共同祖先，而所谓的递归三路合并就是，对它们的共同祖先继续找共同祖先，直到找到唯一一个共同祖先为止，这样可以减少冲突的概率。
 
-![image-20200821162427631](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyiesx9xnj30sg0bumz2.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyiesx9xnj30sg0bumz2.jpg" width="600px"></img>
+</p>
 
 如上图所示，我们要合并`5`和`6`，就需要先找到`5/6`的共同祖先——`2`和`3`，然后再继续找共同祖先——`1`，当我们找到唯一祖先时，开始递归三路合并，先对`1、2、3`进行三路合并，得到临时节点`2'/B`：
 
-![image-20200821163023216](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyikyugzyj30zi0be0ux.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyikyugzyj30zi0be0ux.jpg" width="600px"></img>
+</p>
 
 接下来继续对`2、5、6`进行三路合并，得到`7/C`：
 
-![image-20200821163219605](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyimzenpkj30w40bowge.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyimzenpkj30w40bowge.jpg" width="600px"></img>
+</p>
 
 ## rebase
 
 当我们处于`dev`分支，然后使用`git rebase master`时，可以理解为把`dev`分支上的部分在`master`分支后面重新提交了一遍（重演），具体看下图：
 
-![image-20200821172307834](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyk3uajtij31dw0oo79j.jpg)
+
+<p align="center">
+<img  src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyk3uajtij31dw0oo79j.jpg" width="800px"></img>
+</p>
 
 首先找到`dev`分支和`master`分支的祖先`a23c4`，然后从`a23c4`到`dev`所在路径上的节点，都通过回放的方式插入到`master`之后，注意，这里“复制”的过程中，`commitId`是会改变的。同时，`dev`旧分支上的节点因为没有了引用则会被丢弃。
 
@@ -165,4 +210,5 @@ print("hello")
 ## 参考资料
 
 图解Git：  https://marklodato.github.io/visual-git-guide/index-zh-cn.html
+
 Pro Git：https://bingohuang.gitbooks.io/progit2/content/
