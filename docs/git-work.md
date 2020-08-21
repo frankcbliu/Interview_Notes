@@ -5,7 +5,7 @@
 - 是否了解`工作区`、`暂存区`、`仓库`之间的区别？
 - `Git`的常用命令在三大区域中是如何工作的？
 - 分支是如何合并的？原理是什么？
-- 分支合并中`rebase`和`fast-forwad`的区别？
+- 分支合并中`rebase`和`merge`的区别？
 
 如果有回答不出的，那么建议还是往下仔细看看文章吧~
 
@@ -76,10 +76,93 @@
 
 ### merge
 
+`Git`的合并有许多策略，默认情况下`Git`会帮助我们挑选合适的策略，当然如果我们需要手动指定，可以使用：`git merge -s [策略名称]`，了解 `Git` 合并策略的原理可以使你对合并结果有一个准确的预期。
 
+####  Fast-forward
 
+`Fast-forward`是最简单的一种合并策略，如我们前面示例的图所示，`dev`分支是`master`分支的祖先节点，那么合并`git merge dev`的话，只会将`dev`指向`master`当前位置，`Fast-forward`是`Git`合并两个**没有分叉**的分支时的默认行为。
 
+#### Recursive
+
+`Recursive`是`Git`在合并两个**有分叉**的分支时的默认行为，简单的说，是递归的进行三路合并。
+
+![image-20200821154338713](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyh8c69f7j318u0oyn1n.jpg)
+
+这里出现了一个新名词——`三路合并（three-way merge）`，也是我们接下来讲解的重点。我们先搞清楚合并的整体链路。
+
+- 首先`dev`分支的`c5k8x`与`HEAD`指向的`sf22x`，再加上它们的最近公共祖先`a23c4`先进行一次三路合并；
+- 然后将合并后的结果拷贝到**暂存区**和**工作区**；
+- 再然后产生一次新的提交，该提交的祖先为`dev`和`原master`；
+
+## 分支合并的原理
+
+首先，我们来看看两个文件如何合并：
+
+下图所示为`test.py`中某一行的代码，如果我们要将`A/B`两个版本合并，就需要确定是`A`修改了`B`，还是`B`修改了`A`，亦或者两者都修改了，显然这种情况下分辨不出来。
+
+![image-20200821160242437](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhs6cue4j30ka08w74o.jpg)
+
+因此，为了实现两个文件的合并，我们引入**三路合并**：
+
+如下图所示，很显然`A`与`Base`版本相同，`B`版本的修改比`A`版本新，因此将`A/B`合并后，得到的就是`B`版本。
+
+![image-20200821160632748](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhw6316fj30jq0emq3p.jpg)
+
+聪明的读者看完上面的例子，就会想到，要是`A/B`和`Base`都不一样怎么办？这就是接下来要讲的问题了。
+
+### 冲突
+
+当出现下图这种情况时，一般就需要我们手动解决冲突了。
+
+![image-20200821160925270](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyhz5vbohj30ji0e6mxx.jpg)
+
+也就是我们在合并代码时往往会看到的一种情况：
+
+```python
+<<<<<<< HEAD
+print("hello")
+=======
+print("fxxk")
+>>>>>>> B
+```
+
+对于新手而言，看到这个箭头可能有点摸不着头脑，到底哪个是哪个呢？其实分辨起来很简单，中间的`=======`是分隔符，到最上方的`<<<<<<`之间的内容，是`HEAD`版本，也就是当前的`master`分支，而到最下方`>>>>>>`之间的内容，则是分支`B`的，我们只需要删除箭头，保留所需要的版本即可：
+
+```python
+print("hello")
+```
+
+最终合并结果：
+
+![image-20200821161603219](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyi62do05j30w80dkmyc.jpg)
+
+### 递归三路合并
+
+在实际的生产环境中，`Git`的分支往往非常繁杂，会导致合并`A/B`时，能找到多个`A/B`的共同祖先，而所谓的递归三路合并就是，对它们的共同祖先继续找共同祖先，直到找到唯一一个共同祖先为止，这样可以减少冲突的概率。
+
+![image-20200821162427631](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyiesx9xnj30sg0bumz2.jpg)
+
+如上图所示，我们要合并`5`和`6`，就需要先找到`5/6`的共同祖先——`2`和`3`，然后再继续找共同祖先——`1`，当我们找到唯一祖先时，开始递归三路合并，先对`1、2、3`进行三路合并，得到临时节点`2'/B`：
+
+![image-20200821163023216](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyikyugzyj30zi0be0ux.jpg)
+
+接下来继续对`2、5、6`进行三路合并，得到`7/C`：
+
+![image-20200821163219605](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyimzenpkj30w40bowge.jpg)
+
+## rebase
+
+当我们处于`dev`分支，然后使用`git rebase master`时，可以理解为把`dev`分支上的部分在`master`分支后面重新提交了一遍（重演），具体看下图：
+
+![image-20200821172307834](https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyk3uajtij31dw0oo79j.jpg)
+
+首先找到`dev`分支和`master`分支的祖先`a23c4`，然后从`a23c4`到`dev`所在路径上的节点，都通过回放的方式插入到`master`之后，注意，这里“复制”的过程中，`commitId`是会改变的。同时，`dev`旧分支上的节点因为没有了引用则会被丢弃。
+
+## 总结
+
+回顾开头的问题，相信仔细阅读完本篇文章的你已经可以解答了。本篇文章更多聚焦在`Git`的工作原理上，但对于`底层原理`还未展开叙述，下一篇我们会对`Git`底层到底是如何存储文件，如何实现进行讲解，敬请期待。
 
 ## 参考资料
+
 图解Git：  https://marklodato.github.io/visual-git-guide/index-zh-cn.html
 Pro Git：https://bingohuang.gitbooks.io/progit2/content/
