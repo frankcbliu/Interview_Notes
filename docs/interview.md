@@ -1,4 +1,69 @@
-## 设计模式
+## 数据结构与算法
+
+### 堆排序
+
+```java
+public static void heapInsert(int[] arr, int i) { // 升序排序，最大堆
+    // 插入到数组末尾，从下往上走，比父亲结点大就交换
+    while (arr[i] > arr[(i - 1) / 2]) {
+        swap(arr, i, (i - 1) / 2);
+        i = (i - 1) / 2;
+    }
+}
+
+// 将当前堆最大值取出后，重新调整成最大堆
+public static void heapify(int[] arr, int size) {
+    int cur = 0; // 根节点一定为 0
+    int left = 2 * cur + 1;
+    while (left < size) {
+        // 判断左右孩子结点哪个大
+        int max = (left + 1 < size && arr[left + 1] > arr[left]) ? left + 1 : left;
+        // 判断最大的孩子结点和当前结点哪个大
+        max = arr[cur] > arr[max] ? cur : max;
+        if (max == cur) // 如果当前结点就是最大值，那么无需继续调整，终止即可
+            return;
+        swap(arr, cur, max);
+        cur = max;
+        left = 2 * cur + 1;
+    }
+}
+```
+
+### 快速排序
+
+```java
+private static void quickSort(int[] arr, int l, int r) {
+    if (l < r) {
+        // Math.random() [0,1) --> [0, r-l] + l --> [l, r]
+        int random = (int) (Math.random() * (r - l + 1)) + l;
+        swap(arr, random, r);
+        int[] p = partition(arr, l, r);
+        quickSort(arr, l, p[0]);
+        quickSort(arr, p[1], r);
+    }
+}
+
+private static int[] partition(int[] arr, int l, int r) {
+    int less = l - 1;
+    int more = r;
+    while (l < more) {
+        if (arr[l] < arr[r]) {
+            swap(arr, ++less, l++);
+        } else if (arr[l] > arr[r]) {
+            swap(arr, --more, l);
+        } else {
+            l++;
+        }
+    }
+    swap(arr, more, r);
+    // 此时 more 的位置就是我们的锚点位置，返回其左右边界
+    // 对于 2,1,4,5,3 而言，假设选取最后一位进行比较，那么比 3 小的都在左边，比 3 大的都在右边
+    // 最终排成： ... less, 3 (more), more + 1, ... 
+    return new int[]{less, more + 1};
+}
+```
+
+## 设计模式 — 单例模式
 
 ### 懒汉式-线程不安全
 没有用到该类，就不会实例化。
