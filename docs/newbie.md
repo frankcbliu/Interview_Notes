@@ -62,7 +62,7 @@
 
 如下图所示，这里列举了常见的，我们大部分人接触得最多的技术岗位：
 
-![image-20200827200724660](/Users/frankcbliu/Nutstore%20Files/Markdown/img/image-20200827200724660.png)
+![image-20200827200724660](https://tva1.sinaimg.cn/large/007S8ZIlgy1gi5pphyh4yj310m0skmzg.jpg)
 
 那么各个岗位都在做什么呢？
 
