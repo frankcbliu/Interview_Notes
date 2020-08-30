@@ -5,15 +5,18 @@
 <br>
 
 
-|   算法    | 计算机网络 |      项目       |        More         |
-| :-------: | :--------: | :-------------: | :-----------------: |
-| [:pencil2:](http://szufrank.top/#/./docs/code) |  :cloud:   | [📔](http://szufrank.top/#/./docs/go-web) | :pencil: Writing... |
+| 入门指导 |  算法    | 计算机网络 |      项目       |        More         |
+| :-------: | :-------: | :--------: | :-------------: | :-----------------: |
+| [🔥](http://szufrank.top/#/./docs/newbie.md) | [:pencil2:](http://szufrank.top/#/./docs/code) |  :cloud:   | [📔](http://szufrank.top/#/./docs/go-web) | :pencil: Writing... |
 
 <br>
 
 <div align="center">
     <img src="https://s1.ax1x.com/2020/07/18/U2QjoD.png" width="200px">
 </div>
+
+## - 🔥入门指导
+- [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md)
 
 ## ✏️ 算法
 - [剑指 Offer 题解](http://szufrank.top/#/./docs/code)
