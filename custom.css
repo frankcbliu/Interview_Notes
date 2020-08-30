@@ -150,3 +150,9 @@ pre {
     justify-content: space-between;
     font-size: 1.2rem;
 }
+
+/* code 中文 字体大小 */
+
+.markdown-section code {
+    font-size: 15px;
+}

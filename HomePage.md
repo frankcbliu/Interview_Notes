@@ -1,15 +1,14 @@
 ## 🔥入门指导
-- [入门编程【Doing】](./docs/newbie.md)
-- [大厂攻略【TODO】](./docs/nice_job.md)
-- [春招面试【TODO】](./docs/spring.md)
-- [秋招面试【TODO】](./docs/autumn.md)
+- [大学编程入门攻略](./docs/newbie.md)
+- 春招实习攻略【TODO】
+- 秋招攻略【TODO】
 
 ## ✏️ 算法
 
 - [剑指 Offer](./docs/code.md)
 
 ## ☁️ 计算机网络
-- [计算机网络【Doing】](./docs/network.md)
+- 计算机网络【Doing】
 
 ## 📔 项目
 
