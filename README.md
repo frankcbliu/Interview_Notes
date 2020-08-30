@@ -15,7 +15,7 @@
     <img src="https://s1.ax1x.com/2020/07/18/U2QjoD.png" width="200px">
 </div>
 
-## - 🔥入门指导
+## 🔥入门指导
 - [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md)
 
 ## ✏️ 算法
