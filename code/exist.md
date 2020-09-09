@@ -48,7 +48,7 @@ false
 
 > 来源：力扣（LeetCode）
 >
-> 链接：https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof
+> 链接：https://leetcode-cn.com/problems/ju-zhen-zhong-de-lu-jing-lcof/
 
 ## 题解
 
