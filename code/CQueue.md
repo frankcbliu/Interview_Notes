@@ -49,6 +49,8 @@
 
 ## 题解
 
+<<<<<<< HEAD
+=======
 ### JAVA 版本
 
 
@@ -57,6 +59,7 @@
 
 ### js 版本
 
+>>>>>>> ff05b3d2ab112aee16b41785befcd71063e0883a
 ```js
 var CQueue = function() {
     this.stack1 = [];
