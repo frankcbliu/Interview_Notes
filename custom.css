@@ -145,6 +145,7 @@ pre {
 }
 
 /* 翻页跳转 左中右结构 */
+
 .jump {
     display: flex;
     justify-content: space-between;
@@ -155,4 +156,31 @@ pre {
 
 .markdown-section code {
     font-size: 15px;
+}
+
+.detail .title {
+    font-size: 25px !important;
+    color:  var(--theme-color,#42b983);
+    font-weight: bold;
+}
+
+.detail summary {
+    font-size: 16px !important;
+    word-spacing: .05rem;
+    line-height: 30px !important;
+    letter-spacing: 2px !important;
+}
+
+/* 自定义展开标志 */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details > summary .d-marker:before {
+    content: "🐣 点击展开"; 
+    /* 👉 🤜 👋 */
+}
+ 
+details[open] > summary .d-marker:before {
+    content: "🐥 点击收起";
 }

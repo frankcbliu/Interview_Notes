@@ -38,7 +38,9 @@
 >
 > 链接：https://leetcode-cn.com/problems/er-wei-shu-zu-zhong-de-cha-zhao-lcof
 
+
 ## 题解
+
 
 本题考虑对角线的方式走，可以获得最优复杂度`O(M+N)`；下面的代码采用从左下到右上的方式去判断，因为题目中给出的数组是有规律可循的，从左往右递增，从上到下递增。
 
@@ -97,8 +99,3 @@ var findNumberIn2DArray = function(matrix, target) {
     return false;
 }
 ```
-
-
-
-
-
