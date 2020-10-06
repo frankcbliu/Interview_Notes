@@ -16,7 +16,8 @@
 </div>
 
 ## 🔥入门指导
-- [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md)
+- [春招复习指导](http://szufrank.top/#/./docs/code)
+<!-- - [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md) -->
 
 ## ✏️ 算法
 - [剑指 Offer 题解](http://szufrank.top/#/./docs/code)
