@@ -7,7 +7,7 @@
 
 | 入门指导 |  算法    | 计算机网络 |      项目       |        More         |
 | :-------: | :-------: | :--------: | :-------------: | :-----------------: |
-| [🔥](http://szufrank.top/#/./docs/newbie.md) | [:pencil2:](http://szufrank.top/#/./docs/code) |  :cloud:   | [📔](http://szufrank.top/#/./docs/go-web) | :pencil: Writing... |
+| [🔥](http://szufrank.top/#/./docs/spring.md) | [:pencil2:](http://szufrank.top/#/./docs/code) |  [:cloud:](http://szufrank.top/#/./network/network.md)   | [📔](http://szufrank.top/#/./docs/go-web) | :pencil: Writing... |
 
 <br>
 
@@ -16,10 +16,20 @@
 </div>
 
 ## 🔥入门指导
-- [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md)
+- [春招实习攻略](http://szufrank.top/#/./docs/spring.md)
+<!-- - [大学编程入门攻略](http://szufrank.top/#/./docs/newbie.md) -->
 
 ## ✏️ 算法
-- [剑指 Offer 题解](http://szufrank.top/#/./docs/code)
+- [基础算法篇](http://szufrank.top/#/./docs/code.md#基础算法)
+- [春招精选50题](http://szufrank.top/#/./docs/code.md#春招精选50题)
+<!-- - [剑指 Offer 题解](http://szufrank.top/#/./docs/code) -->
+
+## ☁️ 考点梳理
+- [计算机网络考点梳理](http://szufrank.top/#/./network/network.md)
+- [操作系统考点梳理](http://szufrank.top/#/./network/os.md)
+- [MySQL考点梳理](http://szufrank.top/#/./network/mysql.md)
+- [Redis考点梳理](http://szufrank.top/#/./network/redis.md)
+
 
 ## 📔 项目
 - [Go语言动手写Web框架 - Gee](http://szufrank.top/#/./docs/go-web)
