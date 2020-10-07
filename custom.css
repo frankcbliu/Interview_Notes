@@ -184,3 +184,7 @@ details > summary .d-marker:before {
 details[open] > summary .d-marker:before {
     content: "🐥 点击收起";
 }
+/* 去掉丑丑的边框 */
+summary:focus {
+    outline: none;
+}
