@@ -90,6 +90,20 @@
 - [有效括号](https://leetcode-cn.com/problems/valid-parentheses/)
 - [最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)
 
+## 各公司常考题补充
+> 下方列表，展示的是除了上面提到的题目以外，各自还常考的题目。
+
+### 字节（待验证）
+- [单词搜索](https://leetcode-cn.com/problems/word-search/)
+- [重排链表](https://leetcode-cn.com/problems/reorder-list/)
+- [验证栈序列](https://leetcode-cn.com/problems/validate-stack-sequences/)
+- [字典序排数](https://leetcode-cn.com/problems/lexicographical-numbers/)
+- [寻找两个正序数组的中位数](https://leetcode-cn.com/problems/median-of-two-sorted-arrays/)
+- [剪绳子I](https://leetcode-cn.com/problems/jian-sheng-zi-lcof/)
+- [剪绳子II](https://leetcode-cn.com/problems/jian-sheng-zi-ii-lcof/)
+- [最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
+- [下一个数](https://leetcode-cn.com/problems/closed-number-lcci/)
+
 ## 剑指 Offer 题解
 
 <details class="detail">
