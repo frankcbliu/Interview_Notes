@@ -25,11 +25,14 @@
 <!-- - [剑指 Offer 题解](http://szufrank.top/#/./docs/code) -->
 
 ## ☁️ 考点梳理
+- [Java考点梳理](http://szufrank.top/#/./network/java.md)
+- [C++考点梳理](http://szufrank.top/#/./network/c++.md)
 - [计算机网络考点梳理](http://szufrank.top/#/./network/network.md)
 - [操作系统考点梳理](http://szufrank.top/#/./network/os.md)
 - [MySQL考点梳理](http://szufrank.top/#/./network/mysql.md)
 - [Redis考点梳理](http://szufrank.top/#/./network/redis.md)
-
+- [海量数据题](http://szufrank.top/#/./network/big_data.md)
+- [智力题](http://szufrank.top/#/./network/iq.md)
 
 ## 📔 项目
 - [Go语言动手写Web框架 - Gee](http://szufrank.top/#/./docs/go-web)
