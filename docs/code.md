@@ -1,6 +1,7 @@
 ## 基础算法
 
 - [排序算法](./code/sort.md)
+- [排序算法（JS）](./code/sort-js.md)
 - [二叉树遍历](./code/tree_traversal.md)
 
 ## 春招精选50题
