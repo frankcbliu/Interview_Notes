@@ -55,7 +55,7 @@
 
 ### 2.3 计算机网络
 
-- [【计算机网络高频考点】](./network/network.md)
+- [【计算机网络高频考点】](./interview/network.md)
 
 参考书籍：
 - [《图解 HTTP》](https://book.douban.com/subject/25863515/)
@@ -103,7 +103,7 @@
 ![image-20201006121112332](https://tva1.sinaimg.cn/large/007S8ZIlgy1gjfjvdthecj30va0nmjtq.jpg)
 
 #### 5.2.1 Java
-- [Java高频考点梳理](./network/java.md)
+- [Java高频考点梳理](./interview/java.md)
 
 推荐书籍：
 
@@ -116,7 +116,7 @@
 > 有需要我的思维导图作为参考的，可以关注公众号【编程充电宝】，后台回复【导图参考】获取。
 
 #### 5.2.2 C++
-- [C++高频考点梳理](./network/c++.md)
+- [C++高频考点梳理](./interview/c++.md)
 
 推荐书籍：
 - [C++ Primer](https://book.douban.com/subject/25708312/): 大部头，最好能读两遍以上，学的时候依然是带着问题去看。
@@ -130,9 +130,9 @@
 
 > 接下来的内容我会给出一份考点清单， 同时给出参考资料，大家根据考点，去资料中搞懂，然后总结即可。
 
-- [【MySQL考点梳理】](./network/mysql.md)
+- [【MySQL考点梳理】](./interview/mysql.md)
 
-- [【Redis考点梳理】](./network/redis.md)
+- [【Redis考点梳理】](./interview/redis.md)
 
 `MySQL`推荐资料：
 
@@ -146,7 +146,7 @@
 
 ### 5.4 操作系统
 
-考点参考[【操作系统考点梳理】](./network/os.md)
+考点参考[【操作系统考点梳理】](./interview/os.md)
 
 推荐：
 
@@ -188,8 +188,8 @@ sed awk
 偏好问计网和操作系统，`JAVA`选手一样可以面，大多会略过语言方面的问题；另外腾讯的一大特色是海量数据题和智力题。
 
 这个可以参考：
-- [海量数据题](./network/big_data.md)
-- [智力题](./network/iq.md)
+- [海量数据题](./interview/big_data.md)
+- [智力题](./interview/iq.md)
 
 #### 字节跳动
 每一面必手撕算法（一般两道），大多是在牛客网上，所以要提前熟悉牛客网的编程方式。（与`leetcode`不同，没有给好输入输出，需要自己写。）
