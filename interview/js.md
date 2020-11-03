@@ -21,7 +21,6 @@
 - 继承
 - 模块化
   - `import` 和 `require` 区别
-
 - 异步编程
 - 手写代码实现
   - 实现`new`
@@ -31,7 +30,9 @@
   - 实现`Symbol`
   - 实现深拷贝
 
-## 去哪找答案？
+## 探索更多资料
 
-[冴羽的博客](https://github.com/mqyqingfeng/Blog)
+- [JavaScript高级程序设计（第4版）](https://book.douban.com/subject/35175321/)
+- [冴羽的博客](https://github.com/mqyqingfeng/Blog)
+- [神三元的博客](https://juejin.im/user/430664257382462/posts)
 

@@ -1,7 +1,5 @@
 # 浏览器高频考点梳理
 
-## 基础
-
 - 缓存：缓存策略、缓存位置
 - 存储：`localStorage` 和 `sessionStorage` 区别
 - `cookie` 和 `session`
@@ -15,7 +13,7 @@
 - 跨域及解决方法
 - `onload`和`DOMContentLoaded`触发的先后顺序是什么？
 
-## 进阶
-
 - 垃圾回收机制
+
+
 
