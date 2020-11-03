@@ -55,5 +55,7 @@
 
 
 ## 探索更多资料
+- [Vue 官方文档](https://cn.vuejs.org/)
 - [渲染器](http://hcysun.me/vue-design/zh/)
-- 
+- [React 官方文档](https://react.docschina.org/)
+- [微信小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
