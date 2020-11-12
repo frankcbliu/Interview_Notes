@@ -15,6 +15,9 @@
 - [Chrome 拓展插件离线下载](https://crxdl.com/)
 - [Chrome 插件网](https://huajiakeji.com/)
 
+### 优秀插件推荐
+- `JSON Viewer Awesome`: 可以将请求的`json`数据美化
+
 ### 电子书下载
 - [鸠摩搜索](https://www.jiumodiary.com/)
 - [书享家](http://shuxiangjia.cn/)
