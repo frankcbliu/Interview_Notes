@@ -263,13 +263,39 @@ public static int rand7() {
 
 <details class="detail">
 <summary class="title"><span class="d-marker">&nbsp;</span></summary>
-
 **<summary>**
 
 - `25`匹马`5`条跑道找最快的`3`匹马，需要跑几次？答案：`7`次
-- `64`匹马`8`条跑道找最快的`4`匹马，需要跑几次？答案：`11`次
-- `25`匹马`5`条跑道找最快的`5`匹马，需要跑几次？答案：最少`8`次最多`9`次
+- `64`匹马`8`条跑道找最快的`4`匹马，需要跑几次？答案：最少`10`次，最多`11`次
 
+![image-20201218190734422](https://tva1.sinaimg.cn/large/0081Kckwly1gls7vtmjw9j324y0kiwzt.jpg)
+
+此时`A1`显然是第一名，接下来需要找出第`2、3、4`名
+
+![image-20201218191654758](https://tva1.sinaimg.cn/large/0081Kckwly1gls84xp950j322k0kgqj9.jpg)
+
+如果`A3`拿了第一名
+
+![image-20201218191118429](https://tva1.sinaimg.cn/large/0081Kckwly1gls7z4mnnoj326g0k67ov.jpg)
+
+如果`A3`不是第一，也就是说`B1`拿了第一
+
+![image-20201218191546095](https://tva1.sinaimg.cn/large/0081Kckwly1gls83sba2uj326y0kwe00.jpg)
+
+
+
+
+- `25`匹马`5`条跑道找最快的`5`匹马，需要跑几次？答案：最少`8`次，最多`9`次
+
+![image-20201218183142853](https://tva1.sinaimg.cn/large/0081Kckwly1gls7v9cethj32420g8n14.jpg)
+
+现在已经跑了`5 + 1`=`6`次
+
+![image-20201218183838301](https://tva1.sinaimg.cn/large/0081Kckwly1gls7oou8h2j324k0g4wun.jpg)
+
+现在已经跑了`5 + 1 + 1` = `7`次
+
+![image-20201218190108104](https://tva1.sinaimg.cn/large/0081Kckwly1gls7ok26wbj31ki0u01kx.jpg)
 
 </details>
 
