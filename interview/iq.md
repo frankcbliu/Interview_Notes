@@ -263,6 +263,7 @@ public static int rand7() {
 
 <details class="detail">
 <summary class="title"><span class="d-marker">&nbsp;</span></summary>
+
 **<summary>**
 
 - `25`匹马`5`条跑道找最快的`3`匹马，需要跑几次？答案：`7`次
