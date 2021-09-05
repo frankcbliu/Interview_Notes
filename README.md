@@ -12,7 +12,7 @@
 <br>
 
 <div align="center">
-    <img src="https://i0.hdslb.com/bfs/album/37d9f75a42c76341c8c5e4055816beb3c1eeec3e.png" width="200px">
+    <img src="https://z3.ax1x.com/2021/09/05/hRsRCF.png" width="200px">
 </div>
 
 ## 🔥入门指导
