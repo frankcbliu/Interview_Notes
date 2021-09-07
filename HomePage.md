@@ -40,7 +40,7 @@
 - [常用书签](./docs/tool.md)
 
 ## 📗 公众号
-![公众号二维码](https://z3.ax1x.com/2021/09/05/hRy2Zt.jpg)
+![公众号二维码](https://s3.jpg.cm/2021/09/07/INtIdf.jpg)
 扫码关注，获取更多优质文章
 <!-- ## 面试突击
 - [大杂烩](./docs/interview.md) -->
