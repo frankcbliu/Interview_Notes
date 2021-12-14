@@ -15,6 +15,8 @@
     <img src="https://z3.ax1x.com/2021/09/05/hRsRCF.png" width="200px">
 </div>
 
+注意！本项目已经迁移到新的博客网站，下方的链接无法跳转到精确位置，大家可以在新网站上自行找到位置。
+
 ## 🔥入门指导
 - [春招实习攻略](http://szufrank.top/#/./docs/spring.md)
 - [前端春招攻略](http://szufrank.top/#/./docs/frontend.md)
