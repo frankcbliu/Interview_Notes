@@ -1,8 +1,9 @@
-- 新版博客地址：[https://szufrank.top/](https://szufrank.top/)
+
 ## 🔥入门指导
 <!-- - [大学编程入门攻略](./docs/newbie.md) -->
 - [春招实习攻略](./docs/spring.md)
 - 秋招攻略【TODO】
+- 新版博客地址：[https://szufrank.top/](https://szufrank.top/)
 
 ## ✏️ 算法 & 通用
 
